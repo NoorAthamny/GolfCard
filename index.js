@@ -14,7 +14,7 @@ class Deck {
   constructor() {
     this.suits = ["hearts", "diamonds", "clubs", "spades"];
     this.cards = this.createDeck();
-    // this.shuffleDeck();
+    this.shuffleDeck();
   }
 
   createDeck() {
@@ -41,6 +41,17 @@ class Deck {
       });
     });
     return deck;
+  }
+
+  shuffleDeck() {
+    for (let i = 0; i < this.cards.length; i++) {
+      const j = Math.floor(Math.random() * this.cards.length);
+      [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+    }
+  }
+
+  drawCard() {
+    return this.cards.pop();
   }
 }
 
