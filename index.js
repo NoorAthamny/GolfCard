@@ -55,6 +55,14 @@ class Deck {
   }
 }
 
-const deck = new Deck();
-const drawnCard = deck.drawCard(); // Draw a card
-console.log("Drawn Card:", drawnCard); // Log the drawn card
+// const deck = new Deck();
+// const drawnCard = deck.drawCard();
+// console.log("Drawn Card:", drawnCard);
+
+class Player {
+  constructor(name) {
+    this.name = name;
+    this.card = [];
+    this.isShown = [false, false, false, false];
+  }
+}
