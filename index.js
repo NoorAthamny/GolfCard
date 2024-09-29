@@ -84,4 +84,37 @@ class Player {
       })
       .join(", ");
   }
+
+  calculateScore() {
+    const cardCounts = this.cards.reduce((acc, card) => {
+      acc[card.rank] = (acc[card.rank] || 0) + 1;
+      return acc;
+    }, {});
+
+    return Object.entries(cardCounts).reduce((acc, [rank, count]) => {
+      if (rank !== 7 && rank !== "Jack" && count === 2) {
+        return acc;
+      } else {
+        return (
+          acc + count * this.cards.find((card) => card.rank === rank).value
+        );
+      }
+    }, 0);
+  }
 }
+
+const player1 = new Player("Noor");
+
+const card1 = new Card("Ace", "Hearts", 1);
+const card2 = new Card("10", "Diamonds", 10);
+const card3 = new Card("King", "Spades", 13);
+const card4 = new Card("7", "Clubs", 0);
+const card5 = new Card("Jack", "Hearts", -1);
+player1.receiveCard(card1);
+player1.receiveCard(card2);
+player1.receiveCard(card3);
+player1.receiveCard(card4);
+player1.receiveCard(card5);
+
+const score = player1.calculateScore();
+console.log(`${player1.name}'s score: ${score}`);
