@@ -14,7 +14,7 @@ class Deck {
   constructor() {
     this.suits = ["hearts", "diamonds", "clubs", "spades"];
     this.cards = this.createDeck();
-    this.shuffleDeck();
+    // this.shuffleDeck();
   }
 
   createDeck() {
@@ -33,5 +33,16 @@ class Deck {
       { rank: "Queen", value: 12 },
       { rank: "King", value: 13 },
     ];
+
+    let deck = [];
+    this.suits.forEach((suit) => {
+      cardRanks.forEach(({ rank, value }) => {
+        deck.push(new Card(rank, suit, value));
+      });
+    });
+    return deck;
   }
 }
+
+const deck = new Deck();
+console.log("Deck of cards:", deck.cards);
