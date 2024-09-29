@@ -62,7 +62,26 @@ class Deck {
 class Player {
   constructor(name) {
     this.name = name;
-    this.card = [];
+    this.cards = [];
     this.isShown = [false, false, false, false];
+  }
+
+  receiveCard(card) {
+    this.cards.push(card);
+  }
+
+  replaceCard(index, newCard) {
+    this.cards[index] = newCard;
+    this.isShown[index] = true;
+  }
+
+  showHand() {
+    return this.cards
+      .map((card, index) => {
+        return this.isShown[index]
+          ? `[${card.rank} of ${card.suit}]`
+          : "[Face Down]";
+      })
+      .join(", ");
   }
 }
