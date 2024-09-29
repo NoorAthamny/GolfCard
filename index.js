@@ -56,4 +56,5 @@ class Deck {
 }
 
 const deck = new Deck();
-console.log("Deck of cards:", deck.cards);
+const drawnCard = deck.drawCard(); // Draw a card
+console.log("Drawn Card:", drawnCard); // Log the drawn card
